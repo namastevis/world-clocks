@@ -3,286 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>World Clocks for Aliens</title>
-    <style>
-      body {
-        background: #efefef;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        font-family: "Segoe UI", Arial, sans-serif;
-      }
-      .main-title {
-        font-size: 2.1em;
-        font-weight: bold;
-        margin-top: 38px;
-        margin-bottom: 10px;
-        text-align: center;
-        letter-spacing: 0.03em;
-        color: #333;
-        width: 100%;
-        max-width: 900px;
-      }
-      .main-title-underline {
-        width: 240px;
-        border: none;
-        border-top: 2.5px solid #2e5aaa88;
-        margin: 0 auto 24px auto;
-        display: block;
-      }
-      .clocks-row {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-        margin-top: 16px;
-        max-width: 950px;
-        width: 100%;
-        justify-items: center;
-      }
-      @media (max-width: 900px) {
-        .clocks-row {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .main-title {
-          font-size: 1.6em;
-        }
-        .main-title-underline {
-          width: 160px;
-        }
-      }
-      @media (max-width: 550px) {
-        .clocks-row {
-          grid-template-columns: 1fr;
-          gap: 22px;
-        }
-        .clock {
-          width: 86vw !important;
-          height: 86vw !important;
-          max-width: 98vw !important;
-          max-height: 98vw !important;
-          min-width: 150px !important;
-          min-height: 150px !important;
-        }
-        .main-title-underline {
-          width: 80vw;
-        }
-      }
-      .clock-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .clock {
-        width: 200px;
-        height: 200px;
-        background: #fff;
-        border: 6px solid #333;
-        border-radius: 50%;
-        position: relative;
-        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.07), inset 0 0 8px #efefef,
-          0 2px 10px rgba(0, 0, 0, 0.12);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        user-select: none;
-        margin-bottom: 4px;
-        transition: width 0.2s, height 0.2s;
-      }
-      .clock-face {
-        width: 100%;
-        height: 100%;
-        position: relative;
-      }
-      .hand {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform-origin: left center;
-        z-index: 4;
-        pointer-events: none;
-      }
-      .hour-hand {
-        width: 45px;
-        height: 7px;
-        background: #222;
-        border-radius: 7px;
-        margin-left: 0;
-        margin-top: -3.5px;
-      }
-      .min-hand {
-        width: 66px;
-        height: 4px;
-        background: #555;
-        border-radius: 4px;
-        margin-left: 0;
-        margin-top: -2px;
-      }
-      .second-hand {
-        width: 80px;
-        height: 2px;
-        background: #e33;
-        border-radius: 2px;
-        margin-left: 0;
-        margin-top: -1px;
-      }
-      .center-dot {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: #222;
-        border-radius: 50%;
-        top: 50%;
-        left: 50%;
-        margin-left: -5px;
-        margin-top: -5px;
-        z-index: 10;
-        border: 2px solid #fff;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
-        pointer-events: none;
-      }
-      .tick {
-        position: absolute;
-        width: 10px;
-        height: 2px;
-        background: #333;
-        left: 50%;
-        top: 50%;
-        transform-origin: 0 50%;
-        border-radius: 2px;
-        z-index: 2;
-        pointer-events: none;
-      }
-      .label {
-        font-size: 1.2em;
-        letter-spacing: 0.12em;
-        margin-top: 12px;
-        font-weight: 500;
-        background: #fff;
-        padding: 2px 9px;
-        border-radius: 6px;
-        border: 1px solid #ddd;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-        width: 52px;
-        text-align: center;
-      }
-    </style>
+    <title>World Clock for Aliens</title>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h1 class="main-title">World clocks for Aliens</h1>
+    <h1 class="main-title">World Clock for Aliens</h1>
     <hr class="main-title-underline" />
-    <div class="clocks-row">
-      <div class="clock-container">
-        <div class="clock" id="IST-clock">
-          <div class="clock-face"></div>
-        </div>
-        <div class="label">IST</div>
-      </div>
-      <div class="clock-container">
-        <div class="clock" id="PST-clock">
-          <div class="clock-face"></div>
-        </div>
-        <div class="label">PST</div>
-      </div>
-      <div class="clock-container">
-        <div class="clock" id="EST-clock">
-          <div class="clock-face"></div>
-        </div>
-        <div class="label">EST</div>
-      </div>
-      <div class="clock-container">
-        <div class="clock" id="CST-clock">
-          <div class="clock-face"></div>
-        </div>
-        <div class="label">CST</div>
-      </div>
+
+    <div class="controls">
+      <label for="istTimeInput">Set to IST</label>
+      <input
+        type="time"
+        id="istTimeInput"
+        step="60"
+        class="compact-time"
+        autocomplete="off"
+      />
+      <button id="resetTimeBtn" disabled>Reset to Current Time</button>
     </div>
-    <script>
-      // Timezone database IDs for DST-aware time computation
-      const timezones = [
-        { id: "IST-clock", label: "IST", tzid: "Asia/Kolkata" },
-        { id: "PST-clock", label: "PST", tzid: "America/Los_Angeles" },
-        { id: "EST-clock", label: "EST", tzid: "America/New_York" },
-        { id: "CST-clock", label: "CST", tzid: "America/Chicago" },
-      ];
-      function createTicks(clockFace, radius) {
-        for (let i = 0; i < 12; i++) {
-          const tick = document.createElement("div");
-          tick.className = "tick";
-          tick.style.transform = `rotate(${
-            i * 30
-          }deg) translate(${radius}px, -50%)`;
-          clockFace.appendChild(tick);
-        }
-      }
-      function createHands(clockFace) {
-        const hourHand = document.createElement("div");
-        hourHand.className = "hand hour-hand";
-        const minHand = document.createElement("div");
-        minHand.className = "hand min-hand";
-        const secHand = document.createElement("div");
-        secHand.className = "hand second-hand";
-        clockFace.appendChild(hourHand);
-        clockFace.appendChild(minHand);
-        clockFace.appendChild(secHand);
-        const dot = document.createElement("div");
-        dot.className = "center-dot";
-        clockFace.appendChild(dot);
-        return { hourHand, minHand, secHand };
-      }
-      // Returns { hour, minute, second }
-      function getTimeInZone(tzid) {
-        const now = new Date();
-        const opts = {
-          hour12: false,
-          hour: "numeric",
-          minute: "numeric",
-          second: "numeric",
-          timeZone: tzid,
-        };
-        const parts = new Intl.DateTimeFormat("en-US", opts)
-          .formatToParts(now)
-          .reduce((res, part) => {
-            res[part.type] = Number(part.value);
-            return res;
-          }, {});
-        return {
-          hour: parts.hour,
-          minute: parts.minute,
-          second: parts.second,
-        };
-      }
-      // Setup all clocks
-      const clockHands = {},
-        clockRefs = {};
-      timezones.forEach(({ id }) => {
-        const clock = document.getElementById(id);
-        const face = clock.querySelector(".clock-face");
-        createTicks(face, 80);
-        clockHands[id] = createHands(face);
-        clockRefs[id] = clock;
-      });
-      function setAllClocks() {
-        timezones.forEach(({ id, tzid }) => {
-          const { hour, minute, second } = getTimeInZone(tzid);
-          const secondsDegrees = (second / 60) * 360 - 90;
-          const minsDegrees = (minute / 60) * 360 + (second / 60) * 6 - 90;
-          const hoursDegrees =
-            ((hour % 12) / 12) * 360 + (minute / 60) * 30 - 90;
-          clockHands[
-            id
-          ].secHand.style.transform = `rotate(${secondsDegrees}deg) translateX(0%)`;
-          clockHands[
-            id
-          ].minHand.style.transform = `rotate(${minsDegrees}deg) translateX(0%)`;
-          clockHands[
-            id
-          ].hourHand.style.transform = `rotate(${hoursDegrees}deg) translateX(0%)`;
-        });
-      }
-      setInterval(setAllClocks, 1000);
-      setAllClocks();
-    </script>
+
+    <div class="clocks-row" id="clocksRow"></div>
+    <div class="footer-space"></div>
+
+    <footer class="footer" id="pageFooter">
+      <span class="footer-left">&copy; Namastevis</span>
+      <button class="footer-right" id="backToTopBtn" aria-label="Back to Top">
+        &#8593;
+      </button>
+    </footer>
+
+    <script src="index.js"></script>
   </body>
 </html>
