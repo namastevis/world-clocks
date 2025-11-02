@@ -1,5 +1,5 @@
 const CITY_OPTIONS = [
-  { value: "Asia/Kolkata", text: "Kolkata (India), IST" },
+  { value: "Asia/Kolkata", text: "Hyderabad (India), IST" },
   { value: "America/Los_Angeles", text: "Los Angeles (USA), PST" },
   { value: "America/New_York", text: "New York (USA), EST" },
   { value: "America/Chicago", text: "Chicago (USA), CST" },
